@@ -1,0 +1,44 @@
+<section>
+    <h1>Додайте країну</h1>
+    <div class="add_coutry_block">
+        <form [formGroup]="countryForm" (ngSubmit)="creatCountry()" class="form_category">
+
+
+            <div class="form-group">
+                <label for="countrySelect">Виберіть країну</label>
+                <select id="countrySelect" class="form-control" (change)="onCountrySelect($event)">
+                    <option value="" disabled selected>Оберіть країну</option>
+                    <option *ngFor="let country of coutryList" [value]="country.link">{{ country.name }}</option>
+                </select>
+            </div>
+
+
+            <div class="progress_line">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar"
+                        aria-label="Default striped example" [style.width.%]="uploadPercent" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+            </div>
+            <div class="image_block">
+                <div class="image"> 
+                    <img *ngIf="countryImage; else emptyImage" [src]="countryImage" alt="">
+                </div>
+                <ng-template #emptyImage>
+                  <div class="placeholder"></div>
+                </ng-template>
+            
+                <input #fileInput type="file" style="display: none;" (change)="uploadUserImage($event)" accept="image/*" />
+                <button class="overlay btn" type="button" (click)="fileInput.click()">Змінити зображення</button>
+            </div>
+
+            <div class="batton_section">
+                <button [disabled]="countryForm.invalid" type="submit" class="btn">
+                    Зберегти
+                </button>
+            </div>
+        </form>
+    </div>
+
+
+</section>

@@ -1,0 +1,15 @@
+:root {
+  --clr-1: #c0c0c0;
+  --clr-2: #ff5252;
+  --clr-3: #3c3c3c;
+  --clr-w: #fff;
+  --clr-b: #000000;
+  --transition: all .3s linear;
+}
+
+h1 {
+  font-size: 4em !important;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 5px solid var(--clr-2);
+}

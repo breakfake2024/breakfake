@@ -1,0 +1,62 @@
+section {
+    width: 100vw;
+    height: 92vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    overflow-y: hidden;
+
+    .title {
+        width: 30%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+
+    }
+
+
+    .europe_map {
+        width: 70%;
+        height: 440px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        svg {
+            width: 100%;
+            height: 100%;
+
+            g {
+                path {
+                    stroke: none;
+                    fill-rule: evenodd;
+                    fill: var(--clr-1);
+                    fill-opacity: 0.5;
+                    transition: transform 0.3s ease, fill 0.3s ease;
+                    cursor: pointer;
+
+                    &:hover {
+                        fill: #e0f74b;
+                    }
+
+                }
+
+                g path {
+                    fill: none;
+                    stroke-width: 0.8;
+                    stroke: var(--clr-b);
+
+
+                }
+
+
+            }
+        }
+
+
+    }
+}

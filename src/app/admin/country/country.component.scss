@@ -1,0 +1,20 @@
+    section {
+        width: 100vw;
+        padding: 5px;
+
+        h1 {
+            width: 100%;
+            align-items: center;
+            font-size: 2em !important;
+
+        }
+
+        .add_coutry_block {
+            .dropdown-menu {
+                max-height: 300px;
+                /* Обмежити висоту меню, якщо потрібно */
+                overflow-y: auto;
+                /* Додати прокрутку, якщо елементів більше */
+            }
+        }
+    }

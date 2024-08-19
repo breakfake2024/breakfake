@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { addDoc, collection, collectionData, CollectionReference, deleteDoc, doc, docData, DocumentData, Firestore, updateDoc } from '@angular/fire/firestore';
+import { CountryResponse } from '../../interfaces/country';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CountryService {
-  private countryArr!: Array<any>;
-  private countryCollection!: CollectionReference<DocumentData>;
+  private countryCollection: any;
 
   constructor(private afs: Firestore) {
     this.countryCollection = collection(this.afs, 'country');
@@ -21,7 +21,7 @@ export class CountryService {
     return docData(countryDocumentReference, { idField: 'id' });
   }
 
-  addCountry(country: any) {
+  addCountry(country: CountryResponse) {
     return addDoc(this.countryCollection, country);
   }
 

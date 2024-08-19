@@ -1,0 +1,84 @@
+<section>
+    <h1>Додайте фейк</h1>
+
+
+    <div class="add_coutry_block">
+        <form [formGroup]="fakeForm" (ngSubmit)="creatCountry()" class="form_category">
+
+            <div class="form-group">
+                <label for="countrySelect">Виберіть країну</label>
+                <select id="countrySelect" formControlName="country" class="form-control">
+                    <option value="" disabled selected>Оберіть країну</option>
+                    <option [ngValue]="country" *ngFor="let country of countryArr">
+                        {{ country.name}}
+                    </option>
+                </select>
+            </div>
+
+            <!--Назва організації-->
+            <div class="input_block name_organization">
+                <h4>Назва організації</h4>
+                <div class="input ">
+                    <input formControlName="nameOrganization" type="text" name="nameOrganization" class="form-control"
+                        placeholder="*Введіь назву організації">
+                </div>
+            </div>
+
+            <!--Опис організації-->
+            <div class="input_block description_organization">
+                <h4>Опис організації</h4>
+                <div class="input ">
+                    <editor class="textarea" apiKey="zbrfrvv9yk1ghizpiadd8qk7tmbf2ds9a5lwy3b6lzzpsvv8"
+                        [init]="{ plugins: 'lists link image table code help wordcount' }" [inline]="false"
+                        formControlName="descriptionOrganization"
+                        toolbar="bold italic underline | formatpainter | aligncenter alignleft alignright alignjustify | selectall | ltr rtl | code | help">
+                    </editor>
+                </div>
+            </div>
+
+            <!-- Зображення організації-->
+            <div class="image_organization">
+                <div class="progress_line">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped" role="progressbar"
+                            aria-label="Default striped example" [style.width.%]="uploadPercent" aria-valuemin="0"
+                            aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="image_block">
+                    <div class="image">
+                        <img *ngIf="imageOrganization; else emptyImage" [src]="imageOrganization" alt="">
+                    </div>
+                    <ng-template #emptyImage>
+                        <div class="placeholder"></div>
+                    </ng-template>
+
+                    <input #fileInput type="file" style="display: none;" (change)="uploadUserImage($event)"
+                        accept="image/*" />
+                    <button class="overlay btn" type="button" (click)="fileInput.click()">Змінити зображення</button>
+                </div>
+
+
+            </div>
+
+            <!--Посилання на петицію-->
+            <div class="input_block name_organization">
+                <h4>Посилання на петицію</h4>
+                <div class="input ">
+                    <input formControlName="linkPetition" type="text" name="linkPetition" class="form-control"
+                        placeholder="*Введіь посилання на петицію">
+                </div>
+            </div>
+
+
+            <div class="batton_section">
+                <button [disabled]="fakeForm.invalid" type="submit" class="btn">
+                    Зберегти
+                </button>
+            </div>
+
+        </form>
+    </div>
+
+
+</section>

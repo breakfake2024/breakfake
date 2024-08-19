@@ -20,6 +20,7 @@ export class CountryComponent implements OnInit {
   private countryID!: number | string;
   public countryImage = '';
   public uploadPercent!: number;
+  
 
   constructor(
     private formBuild: FormBuilder,
@@ -38,6 +39,7 @@ export class CountryComponent implements OnInit {
       link: [null, Validators.required],
       flag: [null],
       circuit: [null],
+  
     });
   }
 
@@ -66,6 +68,7 @@ export class CountryComponent implements OnInit {
         link: 'finland',
         flag: '../../assets/image/flags/finland.png',
         circuit: '../../assets/image/circuit/finland.png',
+        
       },
       {
         name: 'Sweden',
@@ -350,6 +353,8 @@ export class CountryComponent implements OnInit {
 
   onCountrySelect(event: any): void {
     const selectedLink = event.target.value;
+   
+    
     const selectedCountry = this.coutryList.find(
       (country) => country.link === selectedLink
     );
@@ -366,22 +371,11 @@ export class CountryComponent implements OnInit {
   }
 
   creatCountry() {
-    let currentContryNumber =
-      this.countryForm.get('country')?.value?.numberСategories;
-    if (
-      typeof currentContryNumber === 'number' &&
-      !isNaN(currentContryNumber)
-    ) {
-         currentContryNumber += 1;
-        this.countryForm.patchValue({
-        numberCountry: currentContryNumber,
-      });
-    }
-
+   
     this.countryService.addCountry(this.countryForm.value).then(() => {
-      console.log('11111');
+       this.ngOnInit();
     });
-    this.ngOnInit();
+  
   }
 
   delCountry(country: any) {

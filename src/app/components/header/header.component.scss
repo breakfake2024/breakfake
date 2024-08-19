@@ -1,25 +1,19 @@
 section {
-     box-shadow: 0px 3px 12px 0px #000000;
-
+    width: 100vw;
+    height: 8vh;
+    position: fixed;
+    z-index: 1000;
 
     .navbar {
-           .container-fluid {
-        
+        width: 100%;
+        box-shadow: 0px 3px 12px 0px #000000;
+
+        .container-fluid {
+
             display: flex;
             align-items: center;
             justify-content: space-between;
 
-            .logo_img {
-                width: auto;
-                height: 7vh;
-                cursor: pointer;
-                overflow: hidden;
-
-                img {
-                    width: 95%;
-                    height: 95%;
-                }
-            }
 
             .navbar-brand {
                 margin-left: 10px;

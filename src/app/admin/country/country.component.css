@@ -1,16 +1,61 @@
-@charset "UTF-8";
 section {
   width: 100vw;
   padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 section h1 {
   width: 100%;
+  pad: 0 20px;
   align-items: center;
   font-size: 2em !important;
 }
-section .add_coutry_block .dropdown-menu {
+section .add_coutry_block {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+section .add_coutry_block .form_coutry .form-group .form-control {
+  width: 200px;
   max-height: 300px;
-  /* Обмежити висоту меню, якщо потрібно */
   overflow-y: auto;
-  /* Додати прокрутку, якщо елементів більше */
+}
+section .add_coutry_block .table_block {
+  width: 100%;
+}
+section .add_coutry_block .table_block table {
+  width: 90%;
+  margin-top: 20px;
+}
+section .add_coutry_block .table_block table thead tr {
+  border-bottom: var(--clr-grey);
+}
+section .add_coutry_block .table_block table tbody tr .image {
+  width: 150px;
+  height: 70px;
+  overflow: hidden;
+}
+section .add_coutry_block .table_block table tbody tr .image img {
+  height: 100%;
+}
+section .add_coutry_block .table_block table tbody tr .btn_tr {
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: none;
+}
+section .add_coutry_block .table_block table tbody tr .btn_tr a {
+  padding: 5px;
+  overflow: hidden;
+}
+section .add_coutry_block .table_block table tbody tr .btn_tr a img {
+  width: 40px;
+  height: 40px;
+}
+section .add_coutry_block .table_block.active {
+  display: none;
 }

@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { LocalStorageService } from '../shared/services/localStorage/local-storage.service';
 import { AuthService } from '../shared/services/auth/auth.service';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterModule, RouterOutlet } from '@angular/router';
 
 
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLinkActive, RouterModule],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })

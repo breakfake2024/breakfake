@@ -7,6 +7,7 @@ import { PartnersComponent } from './pages/partners/partners.component';
 import { EventsComponent } from './pages/events/events.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CountryComponent } from './admin/country/country.component';
+import { FakeComponent } from './admin/fake/fake.component';
 
 
 export const routes: Routes = [
@@ -20,8 +21,9 @@ export const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: '', component: CountryComponent },
+      { path: '', component: CountryComponent, pathMatch: 'full' },
       { path: 'country', component: CountryComponent },
+      { path: 'fake', component: FakeComponent },
       { path: '', pathMatch: 'full', redirectTo: 'action' },
     ],
   },

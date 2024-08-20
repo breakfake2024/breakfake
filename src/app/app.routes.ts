@@ -9,6 +9,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { CountryComponent } from './admin/country/country.component';
 import { FakeComponent } from './admin/fake/fake.component';
 import { AbutComponent } from './admin/abut/abut.component';
+import { AddPartnerComponent } from './admin/add-partner/add-partner.component';
 
 
 export const routes: Routes = [
@@ -26,6 +27,7 @@ export const routes: Routes = [
       { path: 'country', component: CountryComponent },
       { path: 'fake', component: FakeComponent },
       { path: 'about', component: AbutComponent },
+      { path: 'partners', component: AddPartnerComponent },
       { path: '', pathMatch: 'full', redirectTo: 'action' },
     ],
   },

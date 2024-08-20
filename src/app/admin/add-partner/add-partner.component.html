@@ -1,9 +1,55 @@
 <section>
 
-    <h1>Інфломація про проект</h1>
+    <h1>Додайте партнерів</h1>
 
-    <div class="input_block">
-        <form [formGroup]="aboutForm" (ngSubmit)="saveAbout()" class="form_category">
+<div class="creat_button">
+    <p>Створити фейк</p>
+    <button (click)="partners_form = !partners_form; resetForm()" class="btn btn-outline-secondary" data-rel="address"
+        type="button">
+        {{ !partners_form ? "ДОДАТИ ФЕЙК" : "ВІДМІНИТИ" }}
+    </button>
+</div>
+
+    <!--таблиця феків-->
+    <div class="table_block" [ngClass]="{ active: partners_form }">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Опис</th>
+                    <th scope="col">Картинка</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(partners of partnersArr; track partnersArr; let i = $index){
+                <tr>
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ partners.name}}</td>
+                    <td [innerHTML]="partners.description"></td>
+                    <td class="image">
+                        <img [src]="partners.image" />
+                    </td>
+                    <td class="btn_tr">
+                        <a (click)="editFake(partners)" type="button" title="Редагувати">
+                            <img src="../../assets/icon/edit.png" alt="Редагувати">
+                        </a>
+                        <a (click)="delFake(partners)" type="button" title="Видалити">
+                            <img src="../../assets/icon/dell.png" alt="Видалити">
+                        </a>
+                    </td>
+    
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="input_block" [ngClass]="{ active: !partners_form }">
+        <form [formGroup]="partnersForm" (ngSubmit)="addPartner()" class="form_category">
             <!--Про проект-->
             <div class="input_block description_organization">
                 <h4>Опис</h4>
@@ -29,7 +75,7 @@
                 </div>
                 <div class="image_block">
                     <div class="image">
-                        <img *ngIf="imageAbout; else emptyImage" [src]="imageAbout" alt="">
+                        <img *ngIf="image; else emptyImage" [src]="image" alt="">
                     </div>
                     <ng-template #emptyImage>
                         <div class="placeholder"></div>
@@ -64,5 +110,8 @@
 
         </form>
     </div>
+
+
+
 
 </section>

@@ -11,4 +11,11 @@ section {
         font-size: 2em !important;
     }
 
+    .input_block .form_category .button_block{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
 }

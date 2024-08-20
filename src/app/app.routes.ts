@@ -8,6 +8,7 @@ import { EventsComponent } from './pages/events/events.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CountryComponent } from './admin/country/country.component';
 import { FakeComponent } from './admin/fake/fake.component';
+import { AbutComponent } from './admin/abut/abut.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
       { path: '', component: CountryComponent, pathMatch: 'full' },
       { path: 'country', component: CountryComponent },
       { path: 'fake', component: FakeComponent },
+      { path: 'about', component: AbutComponent },
       { path: '', pathMatch: 'full', redirectTo: 'action' },
     ],
   },

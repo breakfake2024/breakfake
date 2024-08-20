@@ -2,8 +2,72 @@
     <h1>Додайте фейк</h1>
 
 
-    <div class="add_coutry_block">
-        <form [formGroup]="fakeForm" (ngSubmit)="creatCountry()" class="form_category">
+ 
+    <div class="button_block">
+        <!--Кнопка створення фейку-->
+        <div class="creat_button">
+            <p>Створити фейк</p>
+            <button (click)="fake_form = !fake_form; resetForm()" class="btn btn-outline-secondary" data-rel="address"
+                type="button">
+                {{ !fake_form ? "ДОДАТИ ФЕЙК" : "ВІДМІНИТИ" }}
+            </button>
+        </div>
+        <!--Фільтр рецептів-->
+        <div class="filter" [ngClass]="{ active: fake_form }">
+            <p>Фітр по країнах</p>
+            <div class="search">
+
+                <select id="countrySelect" class="form-control" (change)="onCountrySelect($event)">
+                    <option value="" disabled selected>Оберіть країну</option>
+                    <option *ngFor="let country of countryArr" [value]="country.id">{{ country.name }}</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+    <!--таблиця феків-->
+    <div class="table_block" [ngClass]="{ active: fake_form }">  
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">№</th>
+                    <th scope="col">Країна</th>
+                    <th scope="col">Назва</th>
+                    <th scope="col">Опис</th>
+                    <th scope="col">Картинка</th>
+                    <th scope="col">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for(fakes of fakeArr; track fakeArr; let i = $index){
+                <tr>
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ fakes.country.name}}</td>
+                    <td>{{ fakes.nameOrganization}}</td>
+                    <td [innerHTML]="fakes.descriptionOrganization"></td>
+                    <td class="image">
+                        <img [src]="fakes.imageOrganization" />
+                    </td>
+                    <td class="btn_tr">
+                        <a (click)="editFake(fakes)" type="button" title="Редагувати">
+                            <img src="../../assets/icon/edit.png" alt="Редагувати">
+                        </a>
+                        <a (click)="delFake(fakes)" type="button" title="Видалити">
+                            <img src="../../assets/icon/dell.png" alt="Видалити">
+                        </a>
+                    </td>
+
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <div class="add_fake_block" [ngClass]="{ active: !fake_form }">
+        <form [formGroup]="fakeForm" (ngSubmit)="creatFake()" class="form_category">
 
             <div class="form-group">
                 <label for="countrySelect">Виберіть країну</label>
@@ -55,7 +119,8 @@
 
                     <input #fileInput type="file" style="display: none;" (change)="uploadUserImage($event)"
                         accept="image/*" />
-                    <button class="overlay btn" type="button" (click)="fileInput.click()">Змінити зображення</button>
+                    <button class="overlay btn btn-outline-secondary" type="button" (click)="fileInput.click()">Змінити
+                        зображення</button>
                 </div>
 
 
@@ -72,7 +137,7 @@
 
 
             <div class="batton_section">
-                <button [disabled]="fakeForm.invalid" type="submit" class="btn">
+                <button [disabled]="fakeForm.invalid" type="submit" class="btn btn-outline-secondary">
                     Зберегти
                 </button>
             </div>
